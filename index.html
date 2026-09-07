@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Taconazo | Nuestra Historia</title>
+<meta name="theme-color" content="#090909">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#090909;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(190,0,0,.25),transparent 35%),
+    linear-gradient(145deg,#050505,#140000 55%,#050505);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    transparent 0%,
+    rgba(0,0,0,.2) 60%,
+    #090909 100%
+  );
+  pointer-events:none;
+}
+
+.brand{
+  position:absolute;
+  top:25px;
+  left:25px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:3px;
+  color:#f5c400;
+  z-index:3;
+}
+
+.sound{
+  position:absolute;
+  right:20px;
+  top:20px;
+  border:1px solid #f5c400;
+  background:rgba(0,0,0,.45);
+  color:#fff;
+  border-radius:30px;
+  padding:10px 15px;
+  cursor:pointer;
+  z-index:4;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:30px;
+  animation:rise 1.3s ease;
+}
+
+.kicker{
+  letter-spacing:5px;
+  color:#f5c400;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:clamp(54px,15vw,150px);
+  line-height:.82;
+  letter-spacing:-6px;
+  font-weight:1000;
+  text-shadow:0 8px 35px #000;
+}
+
+.red{
+  color:#e00000;
+}
+
+.hero p{
+  margin:28px auto 0;
+  max-width:600px;
+  font-size:clamp(16px,3vw,22px);
+  line-height:1.5;
+  color:#ddd;
+}
+
+.scroll{
+  display:inline-block;
+  margin-top:42px;
+  color:#f5c400;
+  font-size:12px;
+  letter-spacing:3px;
+}
+
+section{
+  padding:90px 7vw;
+  max-width:1150px;
+  margin:auto;
+}
+
+.section-label{
+  color:#f5c400;
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+h2{
+  font-size:clamp(38px,7vw,75px);
+  line-height:.95;
+  margin-bottom:25px;
+}
+
+.story{
+  font-size:clamp(18px,2.5vw,25px);
+  line-height:1.65;
+  color:#ddd;
+  max-width:900px;
+}
+
+.story strong{
+  color:#fff;
+}
+
+.divider{
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #e00000,
+    transparent
+  );
+  margin:20px 0;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+  margin-top:35px;
+}
+
+.card{
+  background:linear-gradient(145deg,#171717,#0d0d0d);
+  border:1px solid #292929;
+  border-radius:22px;
+  padding:30px;
+  transition:.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#e00000;
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:4px;
+  background:#e00000;
+}
+
+.card h3{
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#aaa;
+  line-height:1.5;
+  margin-bottom:22px;
+}
+
+.map{
+  display:inline-block;
+  background:#f5c400;
+  color:#111;
+  font-weight:900;
+  padding:13px 18px;
+  border-radius:12px;
+}
+
+.future{
+  background:#e00000;
+  text-align:center;
+  max-width:none;
+  padding:90px 7vw;
+}
+
+.future h2{
+  font-size:clamp(42px,8vw,90px);
+}
+
+.future p{
+  font-size:18px;
+  max-width:700px;
+  margin:auto;
+  line-height:1.6;
+}
+
+footer{
+  padding:45px 20px;
+  text-align:center;
+  background:#050505;
+}
+
+footer .studio{
+  font-size:12px;
+  letter-spacing:4px;
+  color:#f5c400;
+  font-weight:bold;
+}
+
+footer p{
+  margin-top:12px;
+  color:#666;
+  font-size:12px;
+}
+
+@keyframes rise{
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.97);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+@media(max-width:650px){
+
+  section{
+    padding:70px 22px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  h1{
+    letter-spacing:-3px;
+  }
+
+  .brand{
+    left:18px;
+    top:18px;
+  }
+
+  .sound{
+    top:14px;
+    right:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+  <div class="brand">
+    EMILIANO STUDIOS
+  </div>
+
+  <button class="sound" id="soundBtn">
+    ♫ MÚSICA
+  </button>
+
+  <div class="hero-content">
+
+    <div class="kicker">
+      UNA HISTORIA QUE SIGUE CRECIENDO
+    </div>
+
+    <h1>
+      EL <span class="red">TACONAZO</span>
+    </h1>
+
+    <p>
+      Mucho más que un lugar para comer.
+      <br>
+      Una historia hecha de esfuerzo, trabajo y ganas de salir adelante.
+    </p>
+
+    <a class="scroll" href="#historia">
+      DESCUBRIR ↓
+    </a>
+
+  </div>
+
+</div>
+
+
+<section id="historia">
+
+  <div class="section-label">
+    NUESTRA HISTORIA
+  </div>
+
+  <h2>
+    Detrás de cada día,
+    <br>
+    <span class="red">hay trabajo.</span>
+  </h2>
+
+  <div class="divider"></div>
+
+  <p class="story">
+
+    <strong>El Taconazo</strong> no nació solamente para ser un negocio.
+    Detrás de esta historia hay madrugadas, esfuerzo, dedicación y muchas ganas de hacer las cosas bien.
+    Es el resultado de personas que todos los días ponen su trabajo y su corazón para seguir construyendo algo propio.
+
+    <br><br>
+
+    Esta página es una pequeña mirada a todo lo que hay detrás de la marca.
+    Y esto apenas comienza.
+
+  </p>
+
+</section>
+
+
+<section id="ubicaciones">
+
+  <div class="section-label">
+    ENCUÉNTRANOS
+  </div>
+
+  <h2>
+    Estamos
+    <br>
+    <span class="red">aquí.</span>
+  </h2>
+
+  <div class="cards">
+
+    <a
+      class="card"
+      href="https://maps.app.goo.gl/rxNcuHQQVn3jn7Rb6?g_st=aw"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <h3>
+        EL TACONAZO
+      </h3>
+
+      <p>
+        Arrieta Rivera #1, casi esquina con Av. Morelos, Zacapu.
+      </p>
+
+      <span class="map">
+        📍 VER EN GOOGLE MAPS
+      </span>
+
+    </a>
+
+
+    <a
+      class="card"
+      href="https://maps.app.goo.gl/ictFb4bgkbTwJkZJ7?g_st=aw"
+      target="_blank"
+      rel="noopener"
+    >
+
+      <h3>
+        EL TACONAZO · EL TOMBERO
+      </h3>
+
+      <p>
+        Conoce nuestra otra ubicación directamente en Google Maps.
+      </p>
+
+      <span class="map">
+        📍 VER EN GOOGLE MAPS
+      </span>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<div class="future">
+
+  <div class="section-label" style="color:#111">
+    ESTO APENAS COMIENZA
+  </div>
+
+  <h2>
+    LO QUE VIENE
+    <br>
+    SERÁ GRANDE.
+  </h2>
+
+  <p>
+    Gracias por formar parte de esta historia.
+    Nos vemos en El Taconazo.
+  </p>
+
+</div>
+
+
+<footer>
+
+  <div class="studio">
+    EMILIANO STUDIOS
+  </div>
+
+  <p>
+    EL TACONAZO · 2026
+  </p>
+
+</footer>
+
+
+<script>
+
+let audioCtx = null;
+let gain = null;
+let osc = null;
+let playing = false;
+
+const btn = document.getElementById("soundBtn");
+
+function startMusic(){
+
+  audioCtx =
+    new (window.AudioContext || window.webkitAudioContext)();
+
+  gain = audioCtx.createGain();
+
+  gain.gain.value = .035;
+
+  gain.connect(audioCtx.destination);
+
+  osc = audioCtx.createOscillator();
+
+  osc.type = "sine";
+
+  osc.frequency.value = 196;
+
+  osc.connect(gain);
+
+  osc.start();
+
+  playing = true;
+
+  btn.textContent = "♫ APAGAR MÚSICA";
+}
+
+function stopMusic(){
+
+  if(osc){
+
+    try{
+      osc.stop();
+    }catch(e){}
+
+  }
+
+  if(audioCtx){
+
+    try{
+      audioCtx.close();
+    }catch(e){}
+
+  }
+
+  osc = null;
+  audioCtx = null;
+
+  playing = false;
+
+  btn.textContent = "♫ MÚSICA";
+}
+
+btn.addEventListener("click",function(){
+
+  if(playing){
+    stopMusic();
+  }else{
+    startMusic();
+  }
+
+});
+
+</script>
+
+</body>
+  </html>
